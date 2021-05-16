@@ -16,8 +16,9 @@ country_data = home_path / 'country_population_data'
 s3 = boto3.resource('s3')
 data_bucket = 'capstone-sine-demo'
 
+
 def transform_co2_file(co2_demissions_data, filename='co2_emission_data.json'):
-    
+
     # Load file to JSON
     co2_file = open(filename,)
     co2_emissions = json.load(co2_file)
@@ -29,10 +30,11 @@ def transform_co2_file(co2_demissions_data, filename='co2_emission_data.json'):
         new_data = []
         for x in data:
             x['country_name'] = i
-            data_sub = {key: x[key] for key in x.keys() & {'year', 'country_name', 'co2'}}
+            data_sub = {key: x[key]
+                        for key in x.keys() & {'year', 'country_name', 'co2'}}
             new_data.append(data_sub)
 
-        with open(co2_demissions_data +'/' + i + '.json', 'w') as country_file:
+        with open(co2_demissions_data + '/' + i + '.json', 'w') as country_file:
             json.dump(new_data, country_file)
 
 
@@ -78,16 +80,19 @@ def transform_co2_file(co2_demissions_data, filename='co2_emission_data.json'):
 # data = open(str(filename, 'rb')
 # s3.Bucket(data_bucket + '/co2-emission-data').put_object(Key=filename, Body=data)
 # print('Successfully uploaded co2 emission data')
-            
-            
+
+
 # print('Uploading world bank data file to s3')
 # filename = 'world-population-data.csv'
 # data = open(str(filename, 'rb')
 # s3.Bucket(data_bucket + '/wb-population-data').put_object(Key=filename, Body=data)
 # print('Successfully uploaded world bank data')
-            
+
 # print('Uploading world bank data file to s3')
 # filename = 'world-population-data.csv'
 # data = open(str(filename, 'rb')
 # s3.Bucket(data_bucket + '/wb-population-data').put_object(Key=filename, Body=data)
 # print('Successfully uploaded world bank data')
+
+if __name__ == "__main__":
+    transform_co2_file()
