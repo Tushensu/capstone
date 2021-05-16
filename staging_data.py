@@ -5,7 +5,7 @@ import boto3
 
 s3 = boto3.client('s3')
 all_objects = s3.list_objects(
-    Bucket='capstone-test-sine', Prefix='country-data/')
+    Bucket='capstone-test-sine', Prefix='country-data/*.csv', )
 
 for object in all_objects['Contents']:
     print(object['Key'])
