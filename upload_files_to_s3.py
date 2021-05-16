@@ -49,11 +49,6 @@ def upload_files_to_s3(s3_bucket, folder, ext1, ex2=''):
         #     s3_bucket + '/temperature-data').put_object(Key=filename, Body=data)
 
 
-# Upload Temperature Data
-upload_files_to_s3(data_bucket, temperature_data_path, '.csv')
-upload_files_to_s3(data_bucket, co2_demissions_data, '.json')
-upload_files_to_s3(data_bucket, country_data, '.csv')
-
 # print('Uploading temperature data files to s3')
 # for filename in os.listdir(temperature_data_path):
 #     if filename.endswith('.csv') and filename.find('State') == -1 and filename.find('City') == -1:
@@ -89,12 +84,15 @@ upload_files_to_s3(data_bucket, country_data, '.csv')
 # data = open(str(filename, 'rb')
 # s3.Bucket(data_bucket + '/wb-population-data').put_object(Key=filename, Body=data)
 # print('Successfully uploaded world bank data')
-
 # print('Uploading world bank data file to s3')
 # filename = 'world-population-data.csv'
 # data = open(str(filename, 'rb')
 # s3.Bucket(data_bucket + '/wb-population-data').put_object(Key=filename, Body=data)
 # print('Successfully uploaded world bank data')
-
 if __name__ == "__main__":
     transform_co2_file()
+
+    # Upload Temperature Data
+    upload_files_to_s3(data_bucket, temperature_data_path, '.csv')
+    upload_files_to_s3(data_bucket, co2_demissions_data, '.json')
+    upload_files_to_s3(data_bucket, country_data, '.csv')
