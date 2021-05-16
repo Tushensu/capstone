@@ -15,7 +15,7 @@ def redshift(file_name):
     # Begin your transaction
     cur.execute("begin;")
 
-    cur.execute("copy kpi_kpireport from 's3://clab-migration/kpi.csv' credentials 'aws_access_key_id=ID;aws_secret_access_key=KEY/KEY/pL/KEY' csv;")
+    cur.execute("copy world_population_raw from {} csv;".format(file_name))
     # Commit your transaction
     cur.execute("commit;")
     print("Copy executed fine!")
@@ -33,4 +33,5 @@ def access_files(folder_name):
 
 
 if __name__ == "__main__":
-    print(access_files('world-population-data/'))
+    file_name = access_files('world-population-data/')
+    redshift(file_name)
