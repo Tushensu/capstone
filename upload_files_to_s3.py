@@ -58,8 +58,9 @@ if __name__ == "__main__":
             print(filename)
             file_path = str(temperature_data_path) + '/' + filename
             print(file_path)
-    #         data = open(file_path, 'rb')
-    #         s3_path = data_bucket + '/temperature-data'
+            data = open(file_path, 'rb')
+            s3_path = data_bucket + '/temperature-data'
+            print(s3_path)
     #         s3.Bucket(s3_path).put_object(Key=filename, Body=data)
     # print('Successfully uploaded temperature data')
 
