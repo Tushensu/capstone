@@ -15,7 +15,7 @@ country_data = home_path / 'country_population_data'
 
 # Create amazon S3 resource
 s3 = boto3.client('s3')
-data_bucket = 'capstone-sine-demo'
+data_bucket = 'capstone-test-sine'
 
 
 def transform_co2_file(filename='co2_emission_data.json'):
