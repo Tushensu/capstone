@@ -54,7 +54,6 @@ if __name__ == "__main__":
 
     print('Uploading temperature data files to s3')
     for filename in os.listdir(temperature_data_path):
-        print(filename)
         if filename.endswith('.csv') and filename.find('State') == -1 and filename.find('City') == -1:
             file_path = str(temperature_data_path) + '/' + filename
             data = open(file_path, 'rb')
@@ -77,34 +76,18 @@ if __name__ == "__main__":
     for filename in os.listdir(country_data):
         if filename.endswith('.csv') and filename.find('data') == -1:
             file_path = str(country_data) + '/' + filename
+            data = open(file_path, 'rb')
             s3_path = data_bucket
             s3.put_object(Body=data, Bucket=s3_path,
                           Key='country-data/' + filename)
     print('Successfully uploaded country data')
 
-    print('Uploading worl population data files to s3')
+    print('Uploading world population data files to s3')
     for filename in os.listdir(country_data):
         if filename.endswith('.csv'):
             file_path = str(country_data) + '/' + filename
+            data = open(file_path, 'rb')
             s3_path = data_bucket
             s3.put_object(Body=data, Bucket=s3_path,
                           Key='world-population-data/' + filename)
     print('Successfully uploaded world population data')
-
-    # print('Uploading world bank data file to s3')
-    # filename='world-population-data.csv'
-    # data=open(str(filename, 'rb')
-    # s3.Bucket(data_bucket +
-    #           '/wb-population-data').put_object(Key=filename, Body=data)
-    # print('Successfully uploaded world bank data')
-    # print('Uploading world bank data file to s3')
-    # filename='world-population-data.csv'
-    # data=open(str(filename, 'rb')
-    # s3.Bucket(data_bucket +
-    #           '/wb-population-data').put_object(Key=filename, Body=data)
-    # print('Successfully uploaded world bank data')
-
-    # # Upload Temperature Data
-    # upload_files_to_s3(data_bucket, temperature_data_path, '.csv')
-    # upload_files_to_s3(data_bucket, co2_demissions_data, '.json')
-    # upload_files_to_s3(data_bucket, country_data, '.csv')
