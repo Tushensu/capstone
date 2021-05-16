@@ -8,7 +8,7 @@ all_objects = s3.list_objects_v2(
     Bucket='capstone-test-sine', Prefix='country-data/')
 
 for object in all_objects['Contents']:
-    print(object[1]['Key'])
+    print(object)
 
 
 def redshift(bucket_name):
