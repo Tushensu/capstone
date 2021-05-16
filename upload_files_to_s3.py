@@ -1,5 +1,6 @@
 import os
 import boto3
+from botocore.retries import bucket
 import pandas as pd
 from pathlib import *
 import datetime
@@ -13,7 +14,7 @@ co2_demissions_data = home_path / 'co2_emission_data'
 country_data = home_path / 'country_population_data'
 
 # Create amazon S3 resource
-s3 = boto3.resource('s3')
+s3 = boto3.client('s3')
 data_bucket = 'capstone-sine-demo'
 
 
@@ -61,7 +62,7 @@ if __name__ == "__main__":
             data = open(file_path, 'rb')
             s3_path = data_bucket + '/temperature-data/'
             print(s3_path)
-            s3.Bucket(s3_path).put_object(Key=filename, Body=data)
+            s3.put_object(Body=data, Bucket=s3_path, Key=filename)
     # print('Successfully uploaded temperature data')
 
     # print('Uploading co2 emission data files to s3')
