@@ -3,12 +3,11 @@ import psycopg2
 import boto3
 
 
-s3 = boto3.client('s3')
-all_objects = s3.list_objects(
-    Bucket='capstone-test-sine', Prefix='country-data/')
-
-for object in all_objects['Contents']:
-    print(object)
+s3 = boto3.resource('s3')
+bucketName = 'capstone-test-sine'
+bucket = s3.Bucket(bucketName)
+for obj in bucket.objects.all():
+    print(obj.key)
 
 
 def redshift(bucket_name):
