@@ -56,39 +56,36 @@ if __name__ == "__main__":
     for filename in os.listdir(temperature_data_path):
         print(filename)
         if filename.endswith('.csv') and filename.find('State') == -1 and filename.find('City') == -1:
-            print(filename)
             file_path = str(temperature_data_path) + '/' + filename
-            print(file_path)
             data = open(file_path, 'rb')
-            s3_path = data_bucket
-            print(s3_path)
+            s3_path = data_bucket + '/temperature-data'
             s3.put_object(Body=data, Bucket=s3_path, Key=filename)
-    # print('Successfully uploaded temperature data')
+    print('Successfully uploaded temperature data')
 
-    # print('Uploading co2 emission data files to s3')
-    # for filename in os.listdir(co2_demissions_data):
-    #     if filename.endswith('.json'):
-    #         file_path = str(temperature_data_path) + '/' + filename
-    #         data = open(file_path, 'rb')
-    #         s3_path = data_bucket + '/co2-emissions-data'
-    #         s3.Bucket(s3_path).put_object(Key=filename, Body=data)
-    # print('Successfully uploaded co2_emissions data')
+    print('Uploading co2 emission data files to s3')
+    for filename in os.listdir(co2_demissions_data):
+        if filename.endswith('.json'):
+            file_path = str(co2_demissions_data) + '/' + filename
+            data = open(file_path, 'rb')
+            s3_path = data_bucket + '/co2-emissions-data'
+            s3.put_object(Body=data, Bucket=s3_path, Key=filename)
+    print('Successfully uploaded co2_emissions data')
 
-    # print('Uploading country data files to s3')
-    # for filename in os.listdir(country_data):
-    #     if filename.endswith('.csv'):
-    #         file_path = str(temperature_data_path) + '/' + filename
-    #         s3_path = data_bucket + '/country-data'
-    #         s3.Bucket(s3_path).put_object(Key=filename, Body=data)
-    # print('Successfully uploaded country data')
+    print('Uploading country data files to s3')
+    for filename in os.listdir(country_data):
+        if filename.endswith('.csv') and filename.find('data') == -1:
+            file_path = str(country_data) + '/' + filename
+            s3_path = data_bucket + '/country-data'
+            s3.put_object(Body=data, Bucket=s3_path, Key=filename)
+    print('Successfully uploaded country data')
 
-    # print('Uploading worl population data files to s3')
-    # for filename in os.listdir(country_data):
-    #     if filename.endswith('.csv'):
-    #         file_path = str(temperature_data_path) + '/' + filename
-    #         s3_path = data_bucket + '/world-population-data'
-    #         s3.Bucket(s3_path).put_object(Key=filename, Body=data)
-    # print('Successfully uploaded world population data')
+    print('Uploading worl population data files to s3')
+    for filename in os.listdir(country_data):
+        if filename.endswith('.csv'):
+            file_path = str(country_data) + '/' + filename
+            s3_path = data_bucket + '/world-population-data'
+            s3.put_object(Body=data, Bucket=s3_path, Key=filename)
+    print('Successfully uploaded world population data')
 
     # print('Uploading world bank data file to s3')
     # filename='world-population-data.csv'
