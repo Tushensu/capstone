@@ -4,7 +4,8 @@ import boto3
 
 
 s3 = boto3.client('s3')
-all_objects = s3.list_objects(Bucket='capstone-test-sine')
+all_objects = s3.list_objects_v2(
+    Bucket='capstone-test-sine', Prefix='country-data/')
 print(all_objects)
 
 
