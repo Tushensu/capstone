@@ -17,7 +17,7 @@ s3 = boto3.client('s3')
 
 def redshift(file_name):
 
-    conn = psycopg2.connect(dbname='dev', host='redshift-cluster-1.colq4z94wwwe.eu-west-1.redshift.amazonaws.com:5439/dev',
+    conn = psycopg2.connect(dbname='dev', host='redshift-cluster-1.colq4z94wwwe.eu-west-1.redshift.amazonaws.com',
                             port='5439', user='admin', password='SNOlimit#45')
     cur = conn.cursor()
 
