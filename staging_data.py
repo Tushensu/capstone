@@ -4,16 +4,9 @@ import boto3
 
 
 s3 = boto3.client('s3')
-all_objects = s3.list_objects(
-    Bucket='capstone-test-sine', Prefix='country-data/', )
-
-for object in all_objects['Contents']:
-    file_name = object['Key']
-    if file_name.endswith('.csv'):
-        print(file_name)
 
 
-def redshift(bucket_name):
+def redshift(file_name):
 
     conn = psycopg2.connect(dbname='dev', host='capstone.colq4z94wwwe.eu-west-1.redshift.amazonaws.com',
                             port='5439', user='admin', password='SNOlimit#45')
@@ -28,4 +21,16 @@ def redshift(bucket_name):
     print("Copy executed fine!")
 
 
-# redshift()
+def access_files(folder_name):
+
+    all_objects = s3.list_objects(
+        Bucket='capstone-test-sine', Prefix=folder_name, )
+
+    for object in all_objects['Contents']:
+        file_name = object['Key']
+        if file_name.endswith('.csv'):
+            return 's3://capstone/' + folder_name + file_name
+
+
+if __name__ == "__main__":
+    print(access_files('country-data/'))
