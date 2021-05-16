@@ -53,12 +53,15 @@ if __name__ == "__main__":
 
     print('Uploading temperature data files to s3')
     for filename in os.listdir(temperature_data_path):
+        print(filename)
         if filename.endswith('.csv') and filename.find('State') == -1 and filename.find('City') == -1:
+            print(filename)
             file_path = str(temperature_data_path) + '/' + filename
-            data = open(file_path, 'rb')
-            s3_path = data_bucket + '/temperature-data'
-            s3.Bucket(s3_path).put_object(Key=filename, Body=data)
-    print('Successfully uploaded temperature data')
+            print(file_path)
+    #         data = open(file_path, 'rb')
+    #         s3_path = data_bucket + '/temperature-data'
+    #         s3.Bucket(s3_path).put_object(Key=filename, Body=data)
+    # print('Successfully uploaded temperature data')
 
     # print('Uploading co2 emission data files to s3')
     # for filename in os.listdir(co2_demissions_data):
