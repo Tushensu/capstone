@@ -17,7 +17,7 @@ s3 = boto3.resource('s3')
 data_bucket = 'capstone-sine-demo'
 
 
-def transform_co2_file(co2_demissions_data, filename='co2_emission_data.json'):
+def transform_co2_file(filename='co2_emission_data.json'):
 
     # Load file to JSON
     co2_file = open(filename,)
