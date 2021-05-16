@@ -43,10 +43,10 @@ def upload_files_to_s3(s3_bucket, folder, ext1, ex2=''):
     for filename in os.listdir(folder):
         file_path = str(folder) + '/' + filename
         print(file_path)
-        # data = open(filename, 'rb')
-        # s3_path = s3_bucket + '/' + folder.relative_to(home_path)
-        # s3.Bucket(
-        #     s3_bucket + '/temperature-data').put_object(Key=filename, Body=data)
+        data = open(filename, 'rb')
+        s3_path = s3_bucket + '/' + folder.relative_to(home_path)
+        s3.Bucket(
+            s3_bucket + '/temperature-data').put_object(Key=filename, Body=data)
 
 
 # print('Uploading temperature data files to s3')
