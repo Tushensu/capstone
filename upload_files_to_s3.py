@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     print('Uploading world population data files to s3')
     for filename in os.listdir(country_data):
-        if filename.endswith('.csv'):
+        if filename.endswith('.csv') and filename.find('codes') == -1:
             file_path = str(country_data) + '/' + filename
             data = open(file_path, 'rb')
             s3_path = data_bucket
