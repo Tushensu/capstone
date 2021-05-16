@@ -15,4 +15,4 @@ wget https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.json -
 python3 download_world_bank_data.py
 
 # Download from Datahub
-wget https://datahub.io/core/country-codes/r/0.csv -O country_population/country_codes.csv
+wget https://datahub.io/core/country-codes/r/0.csv -O country_population_data/country_codes.csv
