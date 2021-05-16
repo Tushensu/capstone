@@ -36,19 +36,19 @@ def transform_co2_file(co2_demissions_data, filename='co2_emission_data.json'):
             json.dump(new_data, country_file)
 
 
-# Define file upload function
-def upload_files_to_s3(s3_bucket, folder, ext1, ex2=''):
-    for filename in os.listdir(folder):
-        file_path = str(folder) + '/' + filename
-        data = open(filename, 'rb')
-        s3_path = s3_bucket + '/' + folder.relative_to(home_dir)
-        s3.Bucket(s3_bucket + '/temperature-data').put_object(Key=filename, Body=data)
+# # Define file upload function
+# def upload_files_to_s3(s3_bucket, folder, ext1, ex2=''):
+#     for filename in os.listdir(folder):
+#         file_path = str(folder) + '/' + filename
+#         data = open(filename, 'rb')
+#         s3_path = s3_bucket + '/' + folder.relative_to(home_dir)
+#         s3.Bucket(s3_bucket + '/temperature-data').put_object(Key=filename, Body=data)
 
 
-# Upload Temperature Data
-upload_files_to_s3(data_bucket, temperature_data_path, '.csv')
-upload_files_to_s3(data_bucket, co2_demissions_data, '.json')
-upload_files_to_s3(data_bucket, country_data, '.csv')
+# # Upload Temperature Data
+# upload_files_to_s3(data_bucket, temperature_data_path, '.csv')
+# upload_files_to_s3(data_bucket, co2_demissions_data, '.json')
+# upload_files_to_s3(data_bucket, country_data, '.csv')
 
 # print('Uploading temperature data files to s3')
 # for filename in os.listdir(temperature_data_path):
