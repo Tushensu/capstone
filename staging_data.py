@@ -27,7 +27,3 @@ def redshift(bucket_name):
 
 
 # redshift()
-
-
-{'ResponseMetadata': {'RequestId': 'N22EXTQQZ4MEGRMF', 'HostId': 'NjqPkz7mzL1789i0ljgmf7fS6buK1tf5DJwNNwalrHyMpynfeeBy8lwKoDmDh6fTUCLNbBrTUys=', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amz-id-2': 'NjqPkz7mzL1789i0ljgmf7fS6buK1tf5DJwNNwalrHyMpynfeeBy8lwKoDmDh6fTUCLNbBrTUys=', 'x-amz-request-id': 'N22EXTQQZ4MEGRMF', 'date': 'Sun, 16 May 2021 19:12:42 GMT', 'x-amz-bucket-region': 'eu-west-1', 'content-type': 'application/xml', 'transfer-encoding': 'chunked', 'server': 'AmazonS3'}, 'RetryAttempts': 1}, 'IsTruncated': False,
-    'Contents': [{'Key': 'country-data/', 'LastModified': datetime.datetime(2021, 5, 16, 15, 19, 36, tzinfo=tzlocal()), 'ETag': '"d41d8cd98f00b204e9800998ecf8427e"', 'Size': 0, 'StorageClass': 'STANDARD'}, {'Key': 'country-data/country_codes.csv', 'LastModified': datetime.datetime(2021, 5, 16, 18, 31, 54, tzinfo=tzlocal()), 'ETag': '"16db7de697dae70d81d14800b4e7b6e2"', 'Size': 129984, 'StorageClass': 'STANDARD'}], 'Name': 'capstone-test-sine', 'Prefix': 'country-data/', 'MaxKeys': 1000, 'EncodingType': 'url', 'KeyCount': 2}
