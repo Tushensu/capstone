@@ -58,7 +58,7 @@ if __name__ == "__main__":
         if filename.endswith('.csv') and filename.find('State') == -1 and filename.find('City') == -1:
             file_path = str(temperature_data_path) + '/' + filename
             data = open(file_path, 'rb')
-            s3_path = data_bucket + '/temperature-data'
+            s3_path = data_bucket + '/temperature-data/'
             s3.put_object(Body=data, Bucket=s3_path, Key=filename)
     print('Successfully uploaded temperature data')
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         if filename.endswith('.json'):
             file_path = str(co2_demissions_data) + '/' + filename
             data = open(file_path, 'rb')
-            s3_path = data_bucket + '/co2-emissions-data'
+            s3_path = data_bucket + '/co2-emissions-data/'
             s3.put_object(Body=data, Bucket=s3_path, Key=filename)
     print('Successfully uploaded co2_emissions data')
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     for filename in os.listdir(country_data):
         if filename.endswith('.csv') and filename.find('data') == -1:
             file_path = str(country_data) + '/' + filename
-            s3_path = data_bucket + '/country-data'
+            s3_path = data_bucket + '/country-data/'
             s3.put_object(Body=data, Bucket=s3_path, Key=filename)
     print('Successfully uploaded country data')
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     for filename in os.listdir(country_data):
         if filename.endswith('.csv'):
             file_path = str(country_data) + '/' + filename
-            s3_path = data_bucket + '/world-population-data'
+            s3_path = data_bucket + '/world-population-data/'
             s3.put_object(Body=data, Bucket=s3_path, Key=filename)
     print('Successfully uploaded world population data')
 
