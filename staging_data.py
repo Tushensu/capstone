@@ -1,6 +1,15 @@
 import boto3
 import psycopg2
 import boto3
+import configparser
+import os
+
+config = configparser.ConfigParser()
+config.read_file(open('dl.cfg'))
+
+os.environ['AWS_ACCESS_KEY_ID'] = config.get('AWS', 'AWS_ACCESS_KEY_ID')
+os.environ['AWS_SECRET_ACCESS_KEY'] = config.get(
+    'AWS', 'AWS_SECRET_ACCESS_KEY')
 
 
 s3 = boto3.client('s3')
@@ -15,7 +24,8 @@ def redshift(file_name):
     # Begin your transaction
     cur.execute("begin;")
 
-    cur.execute("copy world_population_raw from '{}' csv;".format(file_name))
+    cur.execute("copy world_population_raw from '{}' credentials 'aws_access_key_id=AKIAVCRUEIGJFOD45EMK;aws_secret_access_key=u37ABJ6awN1rvJapP3PoEDVWNha7KBgBHaAvKxOF' csv;".format(
+        file_name))
     # Commit your transaction
     cur.execute("commit;")
     print("Copy executed fine!")
