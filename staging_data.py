@@ -15,7 +15,7 @@ def redshift(file_name):
     # Begin your transaction
     cur.execute("begin;")
 
-    cur.execute("copy world_population_raw from {} csv;".format(file_name))
+    cur.execute("copy world_population_raw from '{}' csv;".format(file_name))
     # Commit your transaction
     cur.execute("commit;")
     print("Copy executed fine!")
