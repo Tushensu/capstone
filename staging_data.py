@@ -33,4 +33,4 @@ def access_files(folder_name):
 
 
 if __name__ == "__main__":
-    print(access_files('country-data/'))
+    print(access_files('world-population-data/'))
