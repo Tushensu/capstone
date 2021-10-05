@@ -17,14 +17,14 @@ s3 = boto3.client('s3')
 
 def redshift(file_name):
 
-    conn = psycopg2.connect(dbname='dev', host='redshift-cluster-1.colq4z94wwwe.eu-west-1.redshift.amazonaws.com',
-                            port='5439', user='admin', password='SNOlimit#45')
+    conn = psycopg2.connect(dbname='dev', host=,
+                            port='5439', user='admin', password=)
     cur = conn.cursor()
 
     # Begin your transaction
     cur.execute("begin;")
 
-    cur.execute("copy world_population_raw from '{}' credentials 'aws_access_key_id=AKIAVCRUEIGJFOD45EMK;aws_secret_access_key=u37ABJ6awN1rvJapP3PoEDVWNha7KBgBHaAvKxOF' delimiter ',' csv region 'eu-west-1';".format(
+    cur.execute("copy world_population_raw from '{}' credentials 'aws_access_key_id=;aws_secret_access_key=' delimiter ',' csv region 'eu-west-1';".format(
         file_name))
     # Commit your transaction
     cur.execute("commit;")
